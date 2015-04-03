@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.css" />
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+<script src="bower_components/momentjs/min/moment.min.js"></script>
 <script src="selectmap.js"></script>
 <script>
 </script>
@@ -13,13 +14,11 @@
   $( "#datepicker" ).datepicker({
     defaultDate: today,
     onSelect: function(dateText, datepicker) {
-      var year = datepicker.selectedYear;
-      var month = datepicker.selectedMonth;
-      var mfrac = month + day/32
-      if (mfrac < 1.125) { year=year-1;}
+      var date = moment($(this).datepicker( 'getDate' ));
+      date = date.subtract(17, 'days');
       $("#seasList").empty();
       $("#yearList").empty();
-      populateYears(year);
+      populateYears(date.year());
       populateSeasons(mfrac);
     }
   });
