@@ -35,30 +35,29 @@
 </script>
 </head>
 <body>
-<form>
-Select year:
-<select id="yearList" onchange="getYear()">
+
+<h2>Select "Today's" Date:</h2>
+<p>Date: <input type="text" id="datepicker"></p>
+
+
+<h2>Resulting Selection options</h2>
+
+<form action="http://www.pacificclimate.org/~fanslow/Files/SCRs/map.php">
+<p>Select year:
+<select id="yearList" name="year" onchange="getYear()">
 </select>
-<!--
-<p>Year is: <input type="text" id="year" size="20"></p>
--->
-</form>
-
-
-<form>
+</p>
+<p>
 Select season:
-<select id="seasList" onchange="getSeason()">
+<select id="seasList" name="season" onchange="getSeason()">
 </select>
+</p>
+<input type="submit" value="Get Maps!"></button>
 
-<!--<p>Season is: <input type="text" id="season" size="20"></p>-->
 </form>
-
 
 <p>
-<button type="button" onclick="openURL()">Get maps!</button>
 
-
-<p>Date: <input type="text" id="datepicker"></p>
 
 
 
