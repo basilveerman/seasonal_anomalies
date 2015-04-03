@@ -1,0 +1,67 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+<script src="selectmap.js"></script>
+<script>
+</script>
+<script type="text/javascript">
+  window.onload=function(){
+  var today = new Date();
+
+  $( "#datepicker" ).datepicker({
+    defaultDate: today,
+    onSelect: function(dateText, datepicker) {
+      var year = datepicker.selectedYear;
+      var month = datepicker.selectedMonth;
+      var mfrac = month + day/32
+      if (mfrac < 1.125) { year=year-1;}
+      $("#seasList").empty();
+      $("#yearList").empty();
+      populateYears(year);
+      populateSeasons(mfrac);
+    }
+  });
+
+
+  var year = today.getFullYear();
+  var mfrac = month + day/32
+  if (mfrac < 1.125) { year=year-1;}
+
+  populateYears(year);
+  populateSeasons(mfrac);
+  };
+</script>
+</head>
+<body>
+<form>
+Select year:
+<select id="yearList" onchange="getYear()">
+</select>
+<!--
+<p>Year is: <input type="text" id="year" size="20"></p>
+-->
+</form>
+
+
+<form>
+Select season:
+<select id="seasList" onchange="getSeason()">
+</select>
+
+<!--<p>Season is: <input type="text" id="season" size="20"></p>-->
+</form>
+
+
+<p>
+<button type="button" onclick="openURL()">Get maps!</button>
+
+
+<p>Date: <input type="text" id="datepicker"></p>
+
+
+
+</body>
+
+</html>
