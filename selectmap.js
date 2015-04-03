@@ -1,4 +1,4 @@
-1;3603;0cArray.prototype.rotate = (function() {
+Array.prototype.rotate = (function() {
     // save references to array functions to make lookup faster
     var push = Array.prototype.push,
         splice = Array.prototype.splice;
