@@ -16,78 +16,40 @@ Array.prototype.rotate = (function() {
     };
 })();
 
-var today = new Date();
-var month = today.getMonth() + 1;
-var year = today.getFullYear();
-var day = today.getDate();
-var nowYear = year
-var mfrac = month + day/32
-if (mfrac < 1.125) { year=year-1;}
-var season;
-var seasonMinMonth;
-var seasonMaxYear;
-
-function populateYears(currentYear) {
+function populateYears(year) {
   <!-- Populate year list -->
-  for (i=currentYear;i>1971;i--){
+  for (i=year;i>1971;i--){
     $('<option/>').val(i).html(i).appendTo('#yearList');
   };
 }
 
-function populateSeasons(currentMfrac) {
+function populateSeasons(season) {
   <!-- Populate season list -->
-  if (currentMfrac >= 1.125 && currentMfrac < 4.125) {
-    seasonIndex=0;
-  } else if (currentMfrac >= 4.125 && currentMfrac < 7.125) {
-    seasonIndex=1;
-  } else if (currentMfrac >=7.125 && currentMfrac < 10.125) {
-    seasonIndex=2;
-  } else if (currentMfrac >=10.125 || currentMfrac < 1.125) {
-    seasonIndex=3;
-  } else {
-    seasonIndex=0;
-  }
-
   var seasons = new Array("Winter", "Spring", "Summer", "Fall");
-  seasons.rotate(seasonIndex);
-  season = seasons[0]
-
+  seasons.rotate(seasons.indexOf(season));
   for (i=0;i<seasons.length;i++){
     $('<option/>').val(seasons[i]).html(seasons[i]).appendTo('#seasList');
   };
 }
 
-  
-  
-if (month == 12 || month == 1 || month == 2)
-{
-    season='Winter';
-}
-else if (month >= 3 && month <= 5) 
-{
-    season='Spring';
-}
-else if (month >=6 && month <= 8)
-{
-    season='Summer';
-}
-else
-{
-    season='Fall';
-}
-
-//var variable;
-
-function getYear()
-{
-    var mylist=document.getElementById("yearList");
-    year = mylist.options[mylist.selectedIndex].text;
-}
-
-function getSeason()
-{
-    var mylist=document.getElementById("seasList");
-    season = mylist.options[mylist.selectedIndex].text;
+function getSeasonFromMonth(month) {
+  if (month == 11 || month == 0 || month == 1)
+  {
+      season='Winter';
+  }
+  else if (month >= 2 && month <= 4)
+  {
+      season='Spring';
+  }
+  else if (month >=5 && month <= 7)
+  {
+      season='Summer';
+  }
+  else
+  {
+      season='Fall';
+  }
+  return season;
 }
 
 function getSeasonMinMonth() 
