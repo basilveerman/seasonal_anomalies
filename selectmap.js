@@ -23,6 +23,15 @@ function populateYears(year) {
   };
 }
 
+function getYears(year) {
+  <!-- return year list -->
+  var years = Array();
+  for (i=year;i>1971;i--){
+    years.push(i);
+  };
+  return years;
+}
+
 function populateSeasons(season) {
   <!-- Populate season list -->
   var seasons = new Array("Winter", "Spring", "Summer", "Fall");
@@ -30,6 +39,12 @@ function populateSeasons(season) {
   for (i=0;i<seasons.length;i++){
     $('<option/>').val(seasons[i]).html(seasons[i]).appendTo('#seasList');
   };
+}
+
+function getSeasons(season) {
+  var seasons = new Array("Winter", "Spring", "Summer", "Fall");
+  seasons.rotate(seasons.indexOf(season));
+  return seasons;
 }
 
 function getSeasonFromMonth(month) {
